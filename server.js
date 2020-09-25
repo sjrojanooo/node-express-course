@@ -4,11 +4,20 @@
 const express = require('express'); 
 const app = express();
 
-//This starts up the server locally on the port I gave as the argument 
-// The base URL is: http://localhost:TheGCI 
-app .listen(8000, function(){
-    console.log("server is running")
+//returning some mock json data.Add 
+const mockUserData=[
+{name:'John'},
+{name:'Jane'}
+]
+
+app.get('/user', function(req,res){
+        res.json({
+                success:true, 
+                message: 'successfully got users. Nice!',
+                users: mockUserData
+        })
 })
 
-
-
+//This starts up the server locally on the port I gave as the argument 
+// The base URL is: http://localhost:TheGCI 
+app .listen(8000, function(){console.log("server is running")})
